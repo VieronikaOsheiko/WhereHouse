@@ -27,3 +27,64 @@ jobs:
 
       - name: Test
         run: dotnet test --configuration Release --no-build --verbosity normal
+
+  k6-performance:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: warehouse
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build API
+        run: dotnet build Warehouse.Api/Warehouse.Api.csproj --configuration Release --no-restore
+
+      - name: Start API
+        env:
+          ASPNETCORE_ENVIRONMENT: Development
+          ASPNETCORE_URLS: http://127.0.0.1:8888
+          ConnectionStrings__Default: "Host=127.0.0.1;Port=5432;Username=postgres;Password=postgres;Database=warehouse"
+        run: |
+          dotnet run --project Warehouse.Api/Warehouse.Api.csproj --configuration Release --no-build --no-launch-profile &
+          for i in $(seq 1 60); do
+            if curl -fsS "http://127.0.0.1:8888/api/zones" >/dev/null; then
+              echo "API is up"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "API failed to start"
+          exit 1
+
+      - name: Install k6
+        uses: grafana/setup-k6-action@v1
+
+      - name: k6 shelves load
+        env:
+          BASE_URL: http://127.0.0.1:8888
+        run: k6 run "tests/k6/shelves-load.js"
+
+      - name: k6 concurrent orders
+        env:
+          BASE_URL: http://127.0.0.1:8888
+        run: k6 run "tests/k6/orders-concurrent.js"

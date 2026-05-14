@@ -15,7 +15,8 @@ public static class LargeDatasetSeeder
 
     public static async Task SeedAsync(WarehouseDbContext db, CancellationToken ct = default)
     {
-        if (await db.Zones.AnyAsync(ct))
+        // Tests may pre-create zones/shelves; we consider dataset ready only when it has inventory items.
+        if (await db.Items.AnyAsync(ct))
             return;
 
         var faker = new Faker();

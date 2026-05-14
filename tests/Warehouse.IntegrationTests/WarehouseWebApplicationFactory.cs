@@ -32,6 +32,7 @@ public sealed class WarehouseWebApplicationFactory : WebApplicationFactory<Progr
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseSetting("ConnectionStrings:Default", _postgres.GetConnectionString());
-        builder.UseSetting("ASPNETCORE_ENVIRONMENT", "Development");
+        // Avoid Development-only demo seeding; integration tests use LargeDatasetSeeder (10k+).
+        builder.UseSetting("ASPNETCORE_ENVIRONMENT", "Testing");
     }
 }

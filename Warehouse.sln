@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -11,13 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Domain", "Warehouse.Domain\Warehouse.Domain.csproj", "{32E5D564-ED71-4BD3-93BC-210BB6388D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Tests.Common", "Warehouse.Tests.Common\Warehouse.Tests.Common.csproj", "{D199A913-1AD4-4226-A7EA-EEBD7C7D2888}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Tests.Common", "tests\Warehouse.Tests.Common\Warehouse.Tests.Common.csproj", "{D199A913-1AD4-4226-A7EA-EEBD7C7D2888}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.UnitTests", "Warehouse.UnitTests\Warehouse.UnitTests.csproj", "{AF74DE85-AE4A-476E-A13C-5667722EFFA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.UnitTests", "tests\Warehouse.UnitTests\Warehouse.UnitTests.csproj", "{AF74DE85-AE4A-476E-A13C-5667722EFFA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.IntegrationTests", "Warehouse.IntegrationTests\Warehouse.IntegrationTests.csproj", "{60E75DF8-AE82-436C-AFA3-B14D3C45695B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.IntegrationTests", "tests\Warehouse.IntegrationTests\Warehouse.IntegrationTests.csproj", "{60E75DF8-AE82-436C-AFA3-B14D3C45695B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.DatabaseTests", "Warehouse.DatabaseTests\Warehouse.DatabaseTests.csproj", "{39BF2F1D-6FD9-4A55-ACD5-CA89EC4FBCB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.DatabaseTests", "tests\Warehouse.DatabaseTests\Warehouse.DatabaseTests.csproj", "{39BF2F1D-6FD9-4A55-ACD5-CA89EC4FBCB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

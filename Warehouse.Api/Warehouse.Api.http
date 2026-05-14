@@ -1,6 +1,11 @@
 @Warehouse.Api_HostAddress = http://localhost:5243
 
-GET {{Warehouse.Api_HostAddress}}/weatherforecast/
+GET {{Warehouse.Api_HostAddress}}/api/zones
+Accept: application/json
+
+###
+
+GET {{Warehouse.Api_HostAddress}}/api/shelves
 Accept: application/json
 
 ###

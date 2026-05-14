@@ -9,7 +9,7 @@
     <PackageReference Include="Bogus" Version="35.6.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warehouse.Domain\Warehouse.Domain.csproj" />
-    <ProjectReference Include="..\Warehouse.Infrastructure\Warehouse.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Warehouse.Domain\Warehouse.Domain.csproj" />
+    <ProjectReference Include="..\..\Warehouse.Infrastructure\Warehouse.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
